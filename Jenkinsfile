@@ -8,7 +8,7 @@ APPROVAL_EMAIL=""
 GIT_REF=""
 
 def templateName = 'eap71-basic-s2i'
-def projectDev = "${NAMESPACE}-develop"
+def projectDev = "${NAMESPACE}"
 def projectQA = "${NAMESPACE}-qa"
 def projectProd = "${NAMESPACE}-production"
 def ocpClusterName = "master"
