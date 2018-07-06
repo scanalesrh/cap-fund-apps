@@ -55,7 +55,6 @@ try {
 						echo "[CREATE] PARAMS ${params}"
 						res = openshift.newApp(templateName, params)
 
-						res = openshift.apply(openshift.process( template, params ) );
 					bc = res.narrow('bc')
 					dc = res.narrow('dc')
 				}
