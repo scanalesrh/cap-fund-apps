@@ -23,6 +23,19 @@ try {
 				}
 			}
 		}
+                stage('preamble') {
+                        openshift.withCluster(ocpClusterName) {
+                                openshift.withProject(projectDev) {
+                                        echo "[PREAMBLE]Using project: ${openshift.project()}"
+                                    // delete everything with this template label
+                                    openshift.selector("all", [ template : templateName ]).delete()
+                                    // delete any secrets with this template label
+                                    if (openshift.selector("secrets", templateName).exists()) {
+                                        openshift.selector("secrets", templateName).delete()
+                                    }
+                                }
+                        }
+                }
 		stage('create') {
 			openshift.withCluster(ocpClusterName) {
 				//openshift.verbose()
