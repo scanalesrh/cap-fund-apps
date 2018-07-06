@@ -23,12 +23,12 @@ try {
 				}
 			}
 		}
-                stage('preamble') {
+                stage('cleanup') {
                         openshift.withCluster(ocpClusterName) {
                                 openshift.withProject(projectDev) {
-                                        echo "[PREAMBLE]Using project: ${openshift.project()}"
+                                    echo "[CleanUP]Using project: ${openshift.project()}"
                                     // delete everything with this template label
-                                    openshift.selector("all", [ template : templateName ]).delete()
+                                    openshift.selector("all", "${NOMBRE_APP}").delete()
                                     // delete any secrets with this template label
                                     if (openshift.selector("secrets", templateName).exists()) {
                                         openshift.selector("secrets", templateName).delete()
