@@ -30,7 +30,7 @@ try {
 					echo '[CREATE]Ejecutando create'
 					def res
 						echo '[CREATE]Proyecto no existe, lo creamos a partir del template'
-						def params = "APPLICATION_NAME=${APP_NAME}"
+						def params = "APPLICATION_NAME=${NOMBRE_APP}"
 						echo "[CREATE] PARAMS ${params}"
 						res = openshift.newApp(templateName, params)
 
