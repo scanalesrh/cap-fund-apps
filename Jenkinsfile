@@ -28,17 +28,9 @@ try {
                                 openshift.withProject(projectDev) {
                                     echo "[CleanUP]Using project: ${openshift.project()}"
                                     // delete everything with this template label
+				    openshift.selector("all", [ template : "${templateName}" ]).delete()
                                     if (openshift.selector("secrets","${templateName}").exists()) {
                                         openshift.selector("secrets","${templateName}").delete()
-                                    }
-                                    if (openshift.selector("services", "${NOMBRE_APP}").exists()) {
-                                        openshift.selector("services", "${NOMBRE_APP}").delete()
-                                    }
-                                    if (openshift.selector("bc", "${NOMBRE_APP}").exists()) {
-                                        openshift.selector("bc", "${NOMBRE_APP}").delete()
-                                    }
-                                    if (openshift.selector("dc", "${NOMBRE_APP}").exists()) {
-                                        openshift.selector("dc", "${NOMBRE_APP}").delete()
                                     }
 
                                 }
