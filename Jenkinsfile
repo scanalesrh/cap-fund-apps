@@ -1,5 +1,5 @@
 NAMESPACE="cap-apps"
-NOMBRE_APP="my-app"
+NOMBRE_APP="eap-app"
 GIT_REPO=""
 TARGET_PORT="8080"
 GIT_USERNAME=""
@@ -30,8 +30,11 @@ try {
                                     // delete everything with this template label
                                     openshift.selector("all", [template:"${NOMBRE_APP}"]).delete()
                                     // delete any secrets with this template label
-                                    if (openshift.selector("secrets", templateName).exists()) {
-                                        openshift.selector("secrets", templateName).delete()
+                                    if (openshift.selector("secrets", ${templateName}).exists()) {
+                                        openshift.selector("secrets", ${templateName}).delete()
+                                    }
+                                    if (openshift.selector("services", "${NOMBRE_APP}").exists()) {
+                                        openshift.selector("services", "${NOMBRE_APP}").delete()
                                     }
 
                                 }
