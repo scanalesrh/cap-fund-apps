@@ -1,4 +1,4 @@
-NAMESPACE="cap-demo-develop"
+NAMESPACE="cap-apps"
 NOMBRE_APP="my-app"
 GIT_REPO=""
 TARGET_PORT="8080"
