@@ -7,7 +7,7 @@ GIT_PASSWORD=""
 APPROVAL_EMAIL=""
 GIT_REF=""
 
-def templateName = ''
+def templateName = 'eap71-basic-s2i'
 def projectDev = "${NAMESPACE}-develop"
 def projectQA = "${NAMESPACE}-qa"
 def projectProd = "${NAMESPACE}-production"
