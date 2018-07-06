@@ -28,8 +28,6 @@ try {
                                 openshift.withProject(projectDev) {
                                     echo "[CleanUP]Using project: ${openshift.project()}"
                                     // delete everything with this template label
-                                    openshift.selector("all", [template:"${NOMBRE_APP}"]).delete()
-                                    // delete any secrets with this template label
                                     if (openshift.selector("secrets","${templateName}").exists()) {
                                         openshift.selector("secrets","${templateName}").delete()
                                     }
