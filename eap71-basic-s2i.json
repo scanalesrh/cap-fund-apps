@@ -268,7 +268,8 @@
                         "terminationGracePeriodSeconds": 75
                     },
 		    "triggers": []
-                }
+                },
+		"triggers": []
             }
         }
     ],
