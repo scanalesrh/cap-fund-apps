@@ -297,6 +297,9 @@
 	    "metadata": {
 		"name": "eap-app-config",
 		"namespace": "cap-apps"
+	    },
+	    "labels":{
+		    "template": "eap71-basic-s2i"
 	    }
 	}   
 
