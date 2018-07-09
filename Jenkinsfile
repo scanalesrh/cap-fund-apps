@@ -1,6 +1,7 @@
 NAMESPACE="cap-apps"
 APPROVAL_EMAIL=""
 
+def templateName = "eap71-basic-s2i"
 def templatePath = "https://raw.githubusercontent.com/scanalesrh/cap-fund-apps/master/eap71-basic-s2i.json"
 def projectDev = "${NAMESPACE}"
 def projectQA = "${NAMESPACE}-qa"
