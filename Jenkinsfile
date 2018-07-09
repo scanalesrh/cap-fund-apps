@@ -1,4 +1,5 @@
 NAMESPACE="cap-apps"
+NOMBRE_APP="eap-app"
 APPROVAL_EMAIL=""
 
 def templateName = "eap71-basic-s2i"
