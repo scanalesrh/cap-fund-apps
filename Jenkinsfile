@@ -28,6 +28,9 @@ try {
                                     if (openshift.selector("secrets","${templateName}").exists()) {
                                         openshift.selector("secrets","${templateName}").delete()
                                     }
+                                    if (openshift.selector("configMap","${NOMBRE_APP}-config").exists()) {
+                                        openshift.selector("configMap","${NOMBRE_APP}-config").delete()
+                                    }
 
                                 }
                         }
