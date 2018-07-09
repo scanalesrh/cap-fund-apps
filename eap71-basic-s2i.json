@@ -154,28 +154,7 @@
                         }
                     },
                     "type": "Source"
-                },
-                "triggers": [
-                    {
-                        "github": {
-                            "secret": "${GITHUB_WEBHOOK_SECRET}"
-                        },
-                        "type": "GitHub"
-                    },
-                    {
-                        "generic": {
-                            "secret": "${GENERIC_WEBHOOK_SECRET}"
-                        },
-                        "type": "Generic"
-                    },
-                    {
-                        "imageChange": {},
-                        "type": "ImageChange"
-                    },
-                    {
-                        "type": "ConfigChange"
-                    }
-                ]
+                }
             }
         },
         {
@@ -288,25 +267,7 @@
                         ],
                         "terminationGracePeriodSeconds": 75
                     }
-                },
-                "triggers": [
-                    {
-                        "imageChangeParams": {
-                            "automatic": true,
-                            "containerNames": [
-                                "${APPLICATION_NAME}"
-                            ],
-                            "from": {
-                                "kind": "ImageStreamTag",
-                                "name": "${APPLICATION_NAME}:latest"
-                            }
-                        },
-                        "type": "ImageChange"
-                    },
-                    {
-                        "type": "ConfigChange"
-                    }
-                ]
+                }
             }
         }
     ],
