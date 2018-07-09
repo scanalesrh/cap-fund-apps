@@ -6,7 +6,7 @@ CONTEXT_DIR="workshopWebApp"
 TARGET_PORT="8080"
 APPROVAL_EMAIL=""
 
-def templateName = "eap71-basic-s2i"
+def templateName = "https://raw.githubusercontent.com/scanalesrh/cap-fund-apps/master/eap71-basic-s2i.json"
 def projectDev = "${NAMESPACE}"
 def projectQA = "${NAMESPACE}-qa"
 def projectProd = "${NAMESPACE}-production"
