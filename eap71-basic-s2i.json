@@ -327,17 +327,20 @@
             "description": "Git source URI for application",
             "displayName": "Git Repository URL",
             "name": "SOURCE_REPOSITORY_URL",
-            "required": true
+            "required": true,
+	    "value": "https://github.com/scanalesrh/cap-fund-apps.git"
         },
         {
             "description": "Git branch/tag reference",
             "displayName": "Git Reference",
-            "name": "SOURCE_REPOSITORY_REF"
+            "name": "SOURCE_REPOSITORY_REF",
+	    "value": "master"
         },
         {
             "description": "Path within Git project to build; empty for root project directory.",
             "displayName": "Context Directory",
-            "name": "CONTEXT_DIR"
+            "name": "CONTEXT_DIR",
+	    "value": "workshopWebApp"
         },
         {
             "description": "Queue names",

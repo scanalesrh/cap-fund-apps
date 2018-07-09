@@ -1,12 +1,7 @@
 NAMESPACE="cap-apps"
-NOMBRE_APP="eap-app"
-SOURCE_REPOSITORY_URL="https://github.com/scanalesrh/cap-fund-apps.git"
-SOURCE_REPOSITORY_REF="master"
-CONTEXT_DIR="workshopWebApp"
-TARGET_PORT="8080"
 APPROVAL_EMAIL=""
 
-def templateName = "https://raw.githubusercontent.com/scanalesrh/cap-fund-apps/master/eap71-basic-s2i.json"
+def templatePath = "https://raw.githubusercontent.com/scanalesrh/cap-fund-apps/master/eap71-basic-s2i.json"
 def projectDev = "${NAMESPACE}"
 def projectQA = "${NAMESPACE}-qa"
 def projectProd = "${NAMESPACE}-production"
@@ -42,9 +37,8 @@ try {
 					echo '[CREATE]Ejecutando create'
 					def res
 						echo '[CREATE]Proyecto no existe, lo creamos a partir del template'
-						def params = "APPLICATION_NAME=${NOMBRE_APP} SOURCE_REPOSITORY_URL=${SOURCE_REPOSITORY_URL} SOURCE_REPOSITORY_REF=${SOURCE_REPOSITORY_REF} CONTEXT_DIR=${CONTEXT_DIR}"
 						echo "[CREATE] PARAMS ${params}"
-						res = openshift.newApp(templateName, params)
+						res = openshift.newApp(templatePath)
 
 					bc = res.narrow('bc')
 					dc = res.narrow('dc')
