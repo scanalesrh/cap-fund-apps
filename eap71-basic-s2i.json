@@ -327,20 +327,17 @@
             "description": "Git source URI for application",
             "displayName": "Git Repository URL",
             "name": "SOURCE_REPOSITORY_URL",
-            "required": true,
-            "value": "https://github.com/jboss-developer/jboss-eap-quickstarts"
+            "required": true
         },
         {
             "description": "Git branch/tag reference",
             "displayName": "Git Reference",
-            "name": "SOURCE_REPOSITORY_REF",
-            "value": "7.1.0.GA"
+            "name": "SOURCE_REPOSITORY_REF"
         },
         {
             "description": "Path within Git project to build; empty for root project directory.",
             "displayName": "Context Directory",
-            "name": "CONTEXT_DIR",
-            "value": "kitchensink"
+            "name": "CONTEXT_DIR"
         },
         {
             "description": "Queue names",
