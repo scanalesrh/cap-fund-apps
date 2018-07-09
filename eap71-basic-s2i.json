@@ -265,13 +265,41 @@
                                 }
                             }
                         ],
-                        "terminationGracePeriodSeconds": 75
+                        "terminationGracePeriodSeconds": 75,
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/opt/config",
+                                "name": "eap-app-config-estqy",
+                                "readOnly": true
+                            }
+                        ]
                     },
 		    "triggers": []
                 },
-		"triggers": []
+		"triggers": [],
+                "volumes": [
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "eap-app-config"
+                        },
+                        "name": "eap-app-config-estqy"
+                    }
+                ]		
             }
-        }
+        },
+	{
+	    "apiVersion": "v1",
+	    "data": {
+		"eap.webcontext": "workshopWebApp"
+	    },
+	    "kind": "ConfigMap",
+	    "metadata": {
+		"name": "eap-app-config",
+		"namespace": "cap-apps"
+	    }
+	}   
+
     ],
     "parameters": [
         {
@@ -378,7 +406,7 @@
         {
             "description": "Container memory limit",
             "name": "MEMORY_LIMIT",
-            "value": "1Gi"
+            "value": "1Mi"
         }
     ]
 }
