@@ -409,7 +409,7 @@
         {
             "description": "Container memory limit",
             "name": "MEMORY_LIMIT",
-            "value": "1Mi"
+            "value": "512Mi"
         }
     ]
 }
