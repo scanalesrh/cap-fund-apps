@@ -219,7 +219,7 @@
                                         "value": "${AUTO_DEPLOY_EXPLODED}"
                                     }
                                 ],
-                                "image": "${APPLICATION_NAME}",
+                                "image": "docker-registry.default.svc:5000/cap-apps/${APPLICATION_NAME}",
                                 "imagePullPolicy": "Always",
                                 "livenessProbe": {
                                     "exec": {
