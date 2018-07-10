@@ -269,6 +269,7 @@
                         "volumeMounts": [
                             {
                                 "mountPath": "/opt/config",
+				"name": "eap-app-config-4nfpd",
                                 "readOnly": true
                             }
                         ]
@@ -281,7 +282,8 @@
                         "configMap": {
                             "defaultMode": 420,
                             "name": "eap-app-config"
-                        }
+                        },
+			name: eap-app-config-4nfpd
                     }
                 ]		
             }
