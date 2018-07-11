@@ -40,10 +40,11 @@ try {
 				//openshift.verbose()
 				openshift.withProject(projectDev) {
 					echo '[CREATE]Ejecutando create'
+					checkout scm
 					def res
-						echo '[CREATE]Proyecto no existe, lo creamos a partir del template'
-						echo "[CREATE] PARAMS ${params}"
-						res = openshift.newApp( readFile('eap71-basic-s2i.json') )
+					echo '[CREATE]Proyecto no existe, lo creamos a partir del template'
+					// echo "[CREATE] PARAMS ${params}"
+					res = openshift.newApp( readFile('eap71-basic-s2i.json') )
 
 					bc = res.narrow('bc')
 					dc = res.narrow('dc')
