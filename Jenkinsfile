@@ -43,7 +43,7 @@ try {
 					def res
 						echo '[CREATE]Proyecto no existe, lo creamos a partir del template'
 						echo "[CREATE] PARAMS ${params}"
-						res = openshift.newApp(templatePath)
+						res = openshift.newApp( readFile('eap71-basic-s2i.json') )
 
 					bc = res.narrow('bc')
 					dc = res.narrow('dc')
