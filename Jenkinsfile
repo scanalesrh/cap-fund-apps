@@ -44,7 +44,8 @@ try {
 					def res
 					echo '[CREATE]Proyecto no existe, lo creamos a partir del template'
 					// echo "[CREATE] PARAMS ${params}"
-					res = openshift.newApp( templatePath )
+					def workspace = manager.build.getEnvVars()["WORKSPACE"]
+					res = openshift.newApp( workspace+'/'+templatePath )
 
 					bc = res.narrow('bc')
 					dc = res.narrow('dc')
