@@ -282,7 +282,7 @@
                         "configMap": {
                             "defaultMode": 420,
                             "name": "eap-app-config"
-                        },
+                        }
                     }
                 ]		
             }
