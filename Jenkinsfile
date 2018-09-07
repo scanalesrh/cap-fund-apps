@@ -45,7 +45,7 @@ try {
 					echo '[CREATE]Proyecto no existe, lo creamos a partir del template'
 					// echo "[CREATE] PARAMS ${params}"
 					
-					res = openshift.newApp("${WORKSPACE}"+templatePath )
+					res = openshift.newApp("${WORKSPACE}/"+templatePath )
 
 					bc = res.narrow('bc')
 					dc = res.narrow('dc')
