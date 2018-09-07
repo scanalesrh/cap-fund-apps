@@ -45,8 +45,7 @@ try {
 					echo '[CREATE]Proyecto no existe, lo creamos a partir del template'
 					// echo "[CREATE] PARAMS ${params}"
 					
-					//res = openshift.newApp("${WORKSPACE}/"+templatePath )
-					res = openshift.newApp( "https://raw.githubusercontent.com/scanalesrh/cap-fund-apps/master/eap71-basic-s2i.json" )
+					res = openshift.newApp("${WORKSPACE}/"+templatePath )
 
 					bc = res.narrow('bc')
 					dc = res.narrow('dc')
