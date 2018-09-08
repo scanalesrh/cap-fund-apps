@@ -19,7 +19,7 @@ try {
 				}
 			}
 		}
-/*                stage('cleanup') {
+                stage('cleanup') {
                         openshift.withCluster(ocpClusterName) {
                                 openshift.withProject(projectDev) {
                                     echo "[CleanUP]Using project: ${openshift.project()}"
@@ -34,7 +34,7 @@ try {
 
                                 }
                         }
-                }*/
+                }
 		stage('create') {
 			openshift.withCluster(ocpClusterName) {
 				//openshift.verbose()
