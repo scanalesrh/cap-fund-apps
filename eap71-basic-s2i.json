@@ -22,7 +22,7 @@
         "name": "eap71-basic-s2i",
         "namespace": "myproject",
         "resourceVersion": "334652435",
-        "selfLink": "/apis/template.openshift.io/v1/namespaces/cap-apps/templates/eap71-basic-s2i",
+        "selfLink": "/apis/template.openshift.io/v1/namespaces/myproject/templates/eap71-basic-s2i",
         "uid": "35a2a58b-815c-11e8-870e-125b034d2f46"
     },
     "objects": [
@@ -219,7 +219,7 @@
                                         "value": "${AUTO_DEPLOY_EXPLODED}"
                                     }
                                 ],
-                                "image": "docker-registry.default.svc:5000/cap-apps/${APPLICATION_NAME}",
+                                "image": "docker-registry.default.svc:5000/myproject/${APPLICATION_NAME}",
                                 "imagePullPolicy": "Always",
                                 "livenessProbe": {
                                     "exec": {
@@ -295,7 +295,7 @@
 	    "kind": "ConfigMap",
 	    "metadata": {
 		"name": "eap-app-config",
-		"namespace": "cap-apps"
+		"namespace": "myproject"
 	    },
 	    "labels":{
 		    "template": "eap71-basic-s2i"
