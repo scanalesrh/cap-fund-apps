@@ -1,7 +1,9 @@
 # Iniciando el Taller
-- Creación de contenedor Jenkins
-- Configuración de Openshift Jenkins Client
-
+- Creación de contenedor Jenkins.
+- Instalando Jenkins Openshift Client.
+- Generando service account token.
+- Configurando Jenkins Openshift Client.
+- Configurando NameSpace en JenkinsFile y OCP Template.
 
 # Anexo
 
