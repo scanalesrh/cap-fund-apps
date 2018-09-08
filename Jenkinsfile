@@ -1,4 +1,4 @@
-NAMESPACE="cap-apps"
+NAMESPACE="myproject"
 NOMBRE_APP="eap-app"
 APPROVAL_EMAIL=""
 
