@@ -20,7 +20,7 @@
         },
         "creationTimestamp": "2018-07-06T20:36:07Z",
         "name": "eap71-basic-s2i",
-        "namespace": "cap-apps",
+        "namespace": "myproject",
         "resourceVersion": "334652435",
         "selfLink": "/apis/template.openshift.io/v1/namespaces/cap-apps/templates/eap71-basic-s2i",
         "uid": "35a2a58b-815c-11e8-870e-125b034d2f46"
