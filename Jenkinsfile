@@ -1,6 +1,6 @@
 NAMESPACE="myproject"
 NOMBRE_APP="eap-app"
-APPROVAL_EMAIL="scanales@redhat.com"
+APPROVAL_EMAIL=""
 
 def templateName = "eap71-basic-s2i"
 def templatePath = "eap71-basic-s2i.json"
@@ -86,10 +86,10 @@ try {
 	    	stage('promote to QA') {
 			openshift.withCluster(ocpClusterName) {
 			    openshift.withProject(projectDev) {
-    			  mail (
+    			/*  mail (
                     to: "$APPROVAL_EMAIL",
                     subject: "${NOMBRE_APP} (${env.BUILD_NUMBER}) está en espera de ser promovida a QA",
-                    body: "Por favor verificar en: ${env.BUILD_URL}.");
+                    body: "Por favor verificar en: ${env.BUILD_URL}.");*/
                   timeout(10) {
                     input "Listo para promover a QA?"
                   }
