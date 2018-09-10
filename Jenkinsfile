@@ -18,7 +18,7 @@ try {
 					echo "[PREAMBLE]Using project: ${openshift.project()}"
 				}
 			}
-		}
+		}/*
                 stage('cleanup') {
                         openshift.withCluster(ocpClusterName) {
                                 openshift.withProject(projectDev) {
@@ -34,7 +34,7 @@ try {
 
                                 }
                         }
-                }
+                }*/
 		stage('create') {
 			openshift.withCluster(ocpClusterName) {
 				openshift.withProject(projectDev) {
