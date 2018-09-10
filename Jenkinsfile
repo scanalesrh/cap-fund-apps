@@ -1,6 +1,6 @@
 NAMESPACE="myproject"
 NOMBRE_APP="eap-app"
-APPROVAL_EMAIL=""
+APPROVAL_EMAIL="scanales@redhat.com"
 
 def templateName = "eap71-basic-s2i"
 def templatePath = "eap71-basic-s2i.json"
@@ -18,7 +18,7 @@ try {
 					echo "[PREAMBLE]Using project: ${openshift.project()}"
 				}
 			}
-		}/*
+		}
                 stage('cleanup') {
                         openshift.withCluster(ocpClusterName) {
                                 openshift.withProject(projectDev) {
@@ -34,7 +34,7 @@ try {
 
                                 }
                         }
-                }*/
+                }
 		stage('create') {
 			openshift.withCluster(ocpClusterName) {
 				openshift.withProject(projectDev) {
