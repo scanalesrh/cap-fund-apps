@@ -1,4 +1,4 @@
-# Iniciando el Taller
+# Actividades del Taller
 - Creación de contenedor Jenkins.
 - Instalando Jenkins Openshift Client.
 - Generando service account token.
