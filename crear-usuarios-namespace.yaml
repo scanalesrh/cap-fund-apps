@@ -1,0 +1,40 @@
+---
+- name: Crear Namespaces de Usuarios
+  hosts: localhost
+  become: true
+
+  tasks:
+# Creación de los usuarios en los nodos masters
+  - name: Create HTPasswd User Loop
+    shell: 'ansible -i hosts masters -m shell -a "htpasswd -b /etc/origin/master/htpasswd usr{{ item }} usr{{ item }}"'
+    with_sequence: start=1 end=20
+# Creación de los proyectos PRE, CICD, PROD
+  - name: Create new Project PRE Loop
+    shell: 'oc new-project taller-usr{{ item }} --description="Taller Cloud Native Application Development" --display-name="Taller CNAD usr{{ item }}"'
+    with_sequence: start=1 end=20
+    ignore_errors: yes
+
+  - name: Create new Project CICD Loop
+    shell: 'oc new-project taller-usr{{ item }}-cicd --description="Taller Cloud Native Application Development" --display-name="Taller CNAD usr{{ item }}-cicd"'
+    with_sequence: start=1 end=20
+    ignore_errors: yes
+
+  - name: Create new Project PROD Loop
+    shell: 'oc new-project taller-usr{{ item }}-prod --description="Taller Cloud Native Application Development" --display-name="Taller CNAD usr{{ item }}-prod"'
+    with_sequence: start=1 end=20
+    ignore_errors: yes
+# Admin a los proyectos PRE, CICD, PROD
+  - name: Add Role admin to User in PRE Loop
+    shell: 'oc adm policy add-role-to-user admin usr{{ item }} -n taller-usr{{ item }}'
+    with_sequence: start=1 end=20
+    ignore_errors: yes
+
+  - name: Add Role admin to User in CICD Loop
+    shell: 'oc adm policy add-role-to-user admin usr{{ item }} -n taller-usr{{ item }}-cicd'
+    with_sequence: start=1 end=20
+    ignore_errors: yes
+
+  - name: Add Role admin to User in PROD Loop
+    shell: 'oc adm policy add-role-to-user admin usr{{ item }} -n taller-usr{{ item }}-prod'
+    with_sequence: start=1 end=20
+    ignore_errors: yes
