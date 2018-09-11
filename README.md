@@ -51,3 +51,7 @@ Requiere:
 - Requiere Openshift Cli (oc)
 - Inventario ansible con nodos maestros (masters)
 - Requiere system:admin (cluster admin) login
+
+## Autores
+- Sergio Canales <scanales@redhat.com>
+- Gerald Schmidt <gschmidt@redhat.com>
