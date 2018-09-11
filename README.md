@@ -35,3 +35,8 @@ mvn archetype:generate -DgroupId=com.redhat.cap.app \
 	-DarchetypeArtifactId=maven-archetype-webapp \
 	-DinteractiveMode=false
 ```
+## Creando usuarios HTPasswd
+
+```
+ansible -i hosts masters -m shell -a "htpasswd -b /etc/origin/master/htpasswd scanales scanales"
+```
