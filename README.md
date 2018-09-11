@@ -40,3 +40,14 @@ mvn archetype:generate -DgroupId=com.redhat.cap.app \
 ```
 ansible -i hosts masters -m shell -a "htpasswd -b /etc/origin/master/htpasswd scanales scanales"
 ```
+
+## Utilizando Ansible para Usuarios y Namespaces
+```
+ansible-playbook -i localhost crear-usuarios-namespace.yaml
+```
+Requiere:
+- Ser ejecutado en bastión (host con accesos a todos los nodos)
+- Requiere ansible
+- Requiere Openshift Cli (oc)
+- Inventario ansible con nodos maestros (masters)
+- Requiere system:admin (cluster admin) login
