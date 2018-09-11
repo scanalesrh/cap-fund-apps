@@ -18,11 +18,22 @@ Reglas:
 - Pad colaborativo: https://etherpad.net/p/cap-fund-apps
 
 ## Actividades del Taller
-- Creación de contenedor Jenkins.
-- Instalando Jenkins Openshift Client.
-- Generando service account token.
-- Configurando Jenkins Openshift Client.
-- Configurando NameSpace en JenkinsFile y OCP Template.
+- Creación de contenedor Jenkins (OCP Web Console).
+- Instalando Jenkins Openshift Client (Jenkins Web Console).
+- Generando service account token (oc).
+```
+oc sa get-token -n myproject-cicd jenkins
+```
+- Configurando Jenkins Openshift Client (Jenkins Web Console).
+- Creando template Gitlab.
+```
+oc create -f https://gitlab.com/gitlab-org/omnibus-gitlab/raw/master/docker/openshift-template.json
+```
+- Creación de contenedor Gitlab (OCP Web Console).
+- Creación de proyecto git e importación de fuentes.
+- Configurando NameSpace en JenkinsFile y OCP Template (Repositorio de fuentes).
+- Configurando Pipeline desde SCM.
+- Otorgando permisos a Jenkins Service Account sobre los proyectos (Namespaces)
 
 # Resolución de Problemas
 ## Errores de Registro de imágenes
