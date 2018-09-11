@@ -1,4 +1,22 @@
-# Actividades del Taller
+
+# Continuous Integration and Continuous Delivery with Openshift
+
+## Para Comenzar
+
+Bienvenido al taller de integración y despliegue continuo, en el contexto del desarrollo de aplicaciones nativas en nuble (Cloud Native Application Development, a.k.a CNAD).
+
+Reglas:
+- Disfrutar.
+- Reir.
+- Colaborar.
+- Preguntar.
+- Contribuir.
+
+- Cluster de Innovación Openshift: https://openshift.innovate.cnad.io/
+- Openshift Command Line Interface (oc): https://github.com/openshift/origin/releases
+- Pad colaborativo: https://etherpad.net/p/cap-fund-apps
+
+## Actividades del Taller
 - Creación de contenedor Jenkins.
 - Instalando Jenkins Openshift Client.
 - Generando service account token.
@@ -55,3 +73,7 @@ Requiere:
 ## Autores
 - Sergio Canales <scanales@redhat.com>
 - Gerald Schmidt <gschmidt@redhat.com>
+
+# Enlaces útiles
+
+- [Red Hat Container Development Kit](https://developers.redhat.com/products/cdk/overview/)
