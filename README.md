@@ -20,6 +20,10 @@ Reglas:
 ## Actividades del Taller
 - Creación de contenedor Jenkins (OCP Web Console).
 - Instalando Jenkins Openshift Client (Jenkins Web Console).
+```
+ Manage Jenkins > Plugin Manager > Filter: openshift > Select: OpenShift Client, OpenShift Pipeline > Download now and  install after restart > Check: Restart Jenkins when installation is complete and no jobs are running
+```
+- oc login.
 - Generando service account token (oc).
 ```
 oc sa get-token -n myproject-cicd jenkins
