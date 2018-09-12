@@ -23,7 +23,10 @@ Reglas:
 ```
  Manage Jenkins > Plugin Manager > Filter: openshift > Select: OpenShift Client, OpenShift Pipeline > Download now and  install after restart > Check: Restart Jenkins when installation is complete and no jobs are running
 ```
-- oc login.
+- Copiar comando de login
+```
+oc login https://openshift.innovate.cnad.io:443 --token=XXX
+```
 - Generando service account token (oc).
 ```
 oc sa get-token -n myproject-cicd jenkins
