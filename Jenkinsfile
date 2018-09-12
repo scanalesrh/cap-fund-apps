@@ -4,7 +4,7 @@ APPROVAL_EMAIL=""
 
 def templateName = "eap71-basic-s2i"
 def templateFilePre = "eap71-basic-s2i-pre.json"
-def templateFilePro = "eap71-basic-s2i-prod.json"
+def templateFileProd = "eap71-basic-s2i-prod.json"
 def appEnvFile = "eap-app.env"
 def projectPre = "${NAMESPACE}"
 def projectProd = "${NAMESPACE}-prod"
