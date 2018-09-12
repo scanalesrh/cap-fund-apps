@@ -30,6 +30,10 @@ oc sa get-token -n myproject-cicd jenkins
 oc create -f https://gitlab.com/gitlab-org/omnibus-gitlab/raw/master/docker/openshift-template.json
 ```
 - Creación de contenedor Gitlab (OCP Web Console).
+- Permisos especiales OCP para Gitlab.
+```
+oc adm policy add-scc-to-user anyuid system:serviceaccount:myproject-cicd:gitlab-ce-user
+```
 - Creación de proyecto git e importación de fuentes.
 - Configurando NameSpace en JenkinsFile y OCP Template (Repositorio de fuentes).
 - Configurando Pipeline desde SCM.
