@@ -305,12 +305,6 @@
     ],
     "parameters": [
         {
-            "description": "The namespace for the application.",
-            "displayName": "Application Namespace",
-            "name": "NAMESPACE",
-            "required": true
-        },
-        {
             "description": "The name for the application.",
             "displayName": "Application Name",
             "name": "APPLICATION_NAME",
