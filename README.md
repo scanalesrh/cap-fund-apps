@@ -27,6 +27,10 @@ Reglas:
 ```
 oc login https://openshift.innovate.cnad.io:443 --token=XXX
 ```
+- Validar que estás usando el proyecto CICD.
+```
+Using project "usr99-cicd"
+```
 - Generando service account token (oc).
 ```
 oc sa get-token -n myproject-cicd jenkins
