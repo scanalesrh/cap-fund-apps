@@ -48,7 +48,11 @@ oc adm policy add-scc-to-user anyuid system:serviceaccount:myproject-cicd:gitlab
 - Creación de proyecto git e importación de fuentes.
 - Configurando NameSpace en JenkinsFile y OCP Template (Repositorio de fuentes).
 - Configurando Pipeline desde SCM.
-- Otorgando permisos a Jenkins Service Account sobre los proyectos (Namespaces)
+- Otorgando permisos a Jenkins Service Account sobre los proyectos (Namespaces).
+```
+oc policy add-role-to-user edit system:serviceaccount:myproject:jenkins -n myproject
+oc policy add-role-to-user edit system:serviceaccount:myproject:jenkins -n myproject-prod
+```
 
 # Resolución de Problemas
 ## Errores de Registro de imágenes
