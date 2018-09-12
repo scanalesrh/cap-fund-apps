@@ -20,9 +20,9 @@
         },
         "creationTimestamp": "2018-07-06T20:36:07Z",
         "name": "eap71-basic-s2i",
-        "namespace": "myproyect-prod",
+        "namespace": "myproject-prod",
         "resourceVersion": "334652435",
-        "selfLink": "/apis/template.openshift.io/v1/namespaces/myproyect-prod/templates/eap71-basic-s2i",
+        "selfLink": "/apis/template.openshift.io/v1/namespaces/myproject-prod/templates/eap71-basic-s2i",
         "uid": "35a2a58b-815c-11e8-870e-125b034d2f46"
     },
     "objects": [
@@ -219,7 +219,7 @@
                                         "value": "${AUTO_DEPLOY_EXPLODED}"
                                     }
                                 ],
-                                "image": "docker-registry.default.svc:5000/myproyect-prod/${APPLICATION_NAME}",
+                                "image": "docker-registry.default.svc:5000/myproject-prod/${APPLICATION_NAME}",
                                 "imagePullPolicy": "Always",
                                 "livenessProbe": {
                                     "exec": {
@@ -295,7 +295,7 @@
 	    "kind": "ConfigMap",
 	    "metadata": {
 		"name": "eap-app-config",
-		"namespace": "myproyect-prod"
+		"namespace": "myproject-prod"
 	    },
 	    "labels":{
 		    "template": "eap71-basic-s2i"
