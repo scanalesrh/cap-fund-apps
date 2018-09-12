@@ -3,10 +3,11 @@ NOMBRE_APP="eap-app"
 APPROVAL_EMAIL=""
 
 def templateName = "eap71-basic-s2i"
-def templatePath = "eap71-basic-s2i.json"
-def projectDev = "${NAMESPACE}"
-def projectQA = "${NAMESPACE}-staging"
-def projectProd = "${NAMESPACE}-production"
+def templateFilePre = "eap71-basic-s2i-pre.json"
+def templateFilePro = "eap71-basic-s2i-prod.json"
+def appEnvFile = "eap-app.env"
+def projectPre = "${NAMESPACE}"
+def projectProd = "${NAMESPACE}-prod"
 def ocpClusterName = "master"
 def bc = ""
 def dc = ""
@@ -14,14 +15,14 @@ try {
     timeout(20) {
 		stage('preamble') {
 			openshift.withCluster(ocpClusterName) {
-				openshift.withProject(projectDev) {
+				openshift.withProject(projectPre) {
 					echo "[PREAMBLE]Using project: ${openshift.project()}"
 				}
 			}
 		}
                 stage('cleanup') {
                         openshift.withCluster(ocpClusterName) {
-                                openshift.withProject(projectDev) {
+                                openshift.withProject(projectPre) {
                                     echo "[CleanUP]Using project: ${openshift.project()}"
                                     // delete everything with this template label
 				    openshift.selector("all", [ template : "${templateName}" ]).delete()
@@ -37,14 +38,14 @@ try {
                 }
 		stage('create') {
 			openshift.withCluster(ocpClusterName) {
-				openshift.withProject(projectDev) {
+				openshift.withProject(projectPre) {
 					echo '[CREATE]Ejecutando create'
 					checkout scm
 					def res
 					echo '[CREATE]Proyecto no existe, lo creamos a partir del template'
 					// echo "[CREATE] PARAMS ${params}"
 					
-					res = openshift.newApp( "${WORKSPACE}/"+templatePath )
+					res = openshift.newApp( "-f","${WORKSPACE}/"+templateFilePre )
 
 					bc = res.narrow('bc')
 					dc = res.narrow('dc')
@@ -54,7 +55,7 @@ try {
 		stage('build') {
 			openshift.withCluster(ocpClusterName) {
 				//openshift.verbose()
-				openshift.withProject(projectDev) {
+				openshift.withProject(projectPre) {
 					echo "[BUILD]Ejecutando build ${bc}"
 					def currentBuild = bc.startBuild()
 					def builds = openshift.selector("build ${currentBuild.object().metadata.name}")
@@ -71,7 +72,7 @@ try {
 		stage('deploy') {
 			openshift.withCluster(ocpClusterName) {
 				//openshift.verbose()
-				openshift.withProject(projectDev) {
+				openshift.withProject(projectPre) {
 					echo '[DEPLOY]Ejecutando deploy'
 				    def rm = openshift.selector("dc/${NOMBRE_APP}").rollout().latest()
 				    timeout(5) {
@@ -83,22 +84,22 @@ try {
 			}
 		}
 //-----------------------------------------------staging-ini---------------------------------------------------------	    	    
-	    	stage('promote to QA') {
+	    	stage('promote to Prod') {
 			openshift.withCluster(ocpClusterName) {
-			    openshift.withProject(projectDev) {
+			    openshift.withProject(projectPre) {
     			/*  mail (
                     to: "$APPROVAL_EMAIL",
-                    subject: "${NOMBRE_APP} (${env.BUILD_NUMBER}) está en espera de ser promovida a QA",
+                    subject: "${NOMBRE_APP} (${env.BUILD_NUMBER}) está en espera de ser promovida a Prod",
                     body: "Por favor verificar en: ${env.BUILD_URL}.");*/
                   timeout(10) {
-                    input "Listo para promover a QA?"
+                    input "Listo para promover a Prod?"
                   }
 			    }
 			}
 		}
-		stage('cleanup QA') {
+		stage('cleanup Prod') {
 		  openshift.withCluster(ocpClusterName) {
-			openshift.withProject(projectQA) {
+			openshift.withProject(projectProd) {
 				  echo '[CLEANUP]Ejecutando cleanup'
 				  openshift.selector("all", [ template : templateName ]).delete()
 				  if (openshift.selector("secrets", "gitsecret").exists()) {
@@ -111,15 +112,15 @@ try {
 			}
 		  }
 		}
-		stage('Promoting object from Dev to QA') {
+		stage('Promoting object from Pre to Prod') {
 			openshift.withCluster(ocpClusterName) {
-				echo '[PROMOTE-QA] Ejecutando copia de OBJ a QA'
-				openshift.withProject( projectQA ) {
+				echo '[PROMOTE-Prod] Ejecutando copia de OBJ a Prod'
+				openshift.withProject( projectProd ) {
 					if (!openshift.selector("dc/${NOMBRE_APP}").exists()) {
-						echo '[PROMOTE-QA]Proyecto no existe, lo creamos a partir del template'
-						res = openshift.newApp( "${WORKSPACE}/"+templatePath )
+						echo '[PROMOTE-Prod]Proyecto no existe, lo creamos a partir del template'
+						res = openshift.newApp( "${WORKSPACE}/"+templateFileProd )
 					}else{
-						echo '[PROMOTE-QA] Proyecto existe, lo actualizamos'
+						echo '[PROMOTE-Prod] Proyecto existe, lo actualizamos'
 						def template = openshift.withProject( 'openshift' ) {
 							openshift.selector('template',templateName).object()
 						}
@@ -131,28 +132,28 @@ try {
 				}
 			}
 		}
-		stage('tag into QA Namespace') {
+		stage('tag into Prod Namespace') {
 		  openshift.withCluster(ocpClusterName) {
 			//openshift.verbose()
-			openshift.withProject(projectDev) {
+			openshift.withProject(projectPre) {
 			  echo '[TAG]Ejecutando tag'
-			  openshift.tag("${projectDev}/${NOMBRE_APP}:latest", "${projectQA}/${NOMBRE_APP}:latest")
+			  openshift.tag("${projectPre}/${NOMBRE_APP}:latest", "${projectProd}/${NOMBRE_APP}:latest")
 			}
 			//openshift.verbose(false)
 		  }
 		}
-		stage('patching QA imageStream And Configs') {
+		stage('patching Prod imageStream And Configs') {
 			openshift.withCluster(ocpClusterName) {
-				openshift.withProject(projectQA) {
-				  echo '[PATCH] Parchando QA: Cambiando env var from '
+				openshift.withProject(projectProd) {
+				  echo '[PATCH] Parchando Prod: Cambiando env var from '
 				}
 			}
 		}
-		stage('deploy on QA') {
+		stage('deploy on Prod') {
 			openshift.withCluster(ocpClusterName) {
 				//openshift.verbose()
-				openshift.withProject(projectQA) {
-					echo '[DEPLOY]Ejecutando deploy QA'
+				openshift.withProject(projectProd) {
+					echo '[DEPLOY]Ejecutando deploy Prod'
 				    def rm = openshift.selector("dc/${NOMBRE_APP}").rollout().latest()
 				    timeout(5) {
 					  openshift.selector("dc/${NOMBRE_APP}").related('pods').untilEach(1) {
