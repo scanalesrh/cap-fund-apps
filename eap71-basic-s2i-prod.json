@@ -305,13 +305,6 @@
     ],
     "parameters": [
         {
-            "description": "The name for the application.",
-            "displayName": "Application Name",
-            "name": "APPLICATION_NAME",
-            "required": true,
-            "value": "eap-app"
-        },
-        {
             "description": "Custom hostname for http service route.  Leave blank for default hostname, e.g.: \u003capplication-name\u003e-\u003cproject\u003e.\u003cdefault-domain-suffix\u003e",
             "displayName": "Custom http Route Hostname",
             "name": "HOSTNAME_HTTP"
