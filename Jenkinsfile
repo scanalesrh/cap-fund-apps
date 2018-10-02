@@ -1,4 +1,4 @@
-NAMESPACE="myproject"
+NAMESPACE="taller-usr1"
 NOMBRE_APP="eap-app"
 APPROVAL_EMAIL=""
 
