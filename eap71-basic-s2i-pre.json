@@ -20,9 +20,9 @@
         },
         "creationTimestamp": "2018-07-06T20:36:07Z",
         "name": "eap71-basic-s2i",
-        "namespace": "myproject",
+        "namespace": "taller-usr1",
         "resourceVersion": "334652435",
-        "selfLink": "/apis/template.openshift.io/v1/namespaces/myproject/templates/eap71-basic-s2i",
+        "selfLink": "/apis/template.openshift.io/v1/namespaces/taller-usr1/templates/eap71-basic-s2i",
         "uid": "35a2a58b-815c-11e8-870e-125b034d2f46"
     },
     "objects": [
