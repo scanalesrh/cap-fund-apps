@@ -219,7 +219,7 @@
                                         "value": "${AUTO_DEPLOY_EXPLODED}"
                                     }
                                 ],
-                                "image": "docker-registry.default.svc:5000/myproject/${APPLICATION_NAME}",
+                                "image": "docker-registry.default.svc:5000/taller-usr1/${APPLICATION_NAME}",
                                 "imagePullPolicy": "Always",
                                 "livenessProbe": {
                                     "exec": {
@@ -295,7 +295,7 @@
 	    "kind": "ConfigMap",
 	    "metadata": {
 		"name": "eap-app-config",
-		"namespace": "myproject"
+		"namespace": "taller-usr1"
 	    },
 	    "labels":{
 		    "template": "eap71-basic-s2i"
